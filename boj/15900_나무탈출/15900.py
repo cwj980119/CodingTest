@@ -1,30 +1,27 @@
-import heapq
+n = int(input())
+children = [[] for i in range(n + 1)]
+depth = [-1 for i in range(n+1)]
 
-game = [-1 for i in range(101)]
-visited = [False for i in range(101)]
-
-n, m = map(int, input().split())
-
-for _ in range(n + m):
+for _ in range(n - 1):
     a, b = map(int, input().split())
-    game[a] = b
+    children[a].append(b)
+    children[b].append(a)
 
-pq = [[0, 1]]
-while pq:
-    d, curr = heapq.heappop(pq)
-    if curr == 100:
-        print(d)
-        break
-    if game[curr] is not -1 and not visited[game[curr]]:
-        heapq.heappush(pq, [d, game[curr]])
-        visited[game[curr]] = True
-    else:
-        for i in range(1, 7):
-            dc = curr + i
-            if dc <= 100 and not visited[dc]:
-                if game[dc] is -1:
-                    heapq.heappush(pq, [d + 1, dc])
-                    visited[dc] = True
-                elif not visited[game[dc]]:
-                    heapq.heappush(pq, [d + 1, game[dc]])
-                    visited[game[dc]] = True
+depth[1] = 0
+q = [[1, 0, 0]]
+total = 0
+while q:
+    curr, parent, dept = q.pop()
+    cnt = 0
+    for c in children[curr]:
+        if c is not parent:
+            cnt += 1
+            depth[c] = dept+1
+            q.append([c, curr, dept+1])
+    if cnt == 0:
+        total += dept
+if total % 2 == 0:
+    answer = "No"
+else:
+    answer = "Yes"
+print(answer)
