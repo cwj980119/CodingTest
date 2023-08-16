@@ -6,7 +6,6 @@ public class Main {
 	static char[][] map;
 	static boolean[][] check;
 	static int r, c;
-	static int t;
 	
 	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -32,13 +31,6 @@ public class Main {
 	}
 	
 	static boolean find(int cr, int cc) {
-//		for(int i = 1; i<=r;i++) {
-//			for(int j = 1; j <= c; j++) {
-//				System.out.print(map[i][j]);
-//			}
-//			System.out.println();
-//		}
-//		System.out.println("========="+cr + " " + cc+"===========");
 		int nr, nc;
 		int[] dir = {-1, 0, 1};
 		if(cc == c) return true;
