@@ -8,7 +8,8 @@ public class Main {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		n = Integer.parseInt(st.nextToken());
-		for(int i = 1; i <= 9;i++) {
+		recurrsion(2,1);
+		for(int i = 3; i <= 9;i+=2) {
 			if(check(i)) recurrsion(i, 1);
 		}
 	}
@@ -20,7 +21,7 @@ public class Main {
 			return;
 		}
 		int curr = num*10;
-		for(int i = 0; i <= 9; i++) {
+		for(int i = 1; i <= 9; i+=2) {
 			if(!check(curr + i)) continue;
 			recurrsion(curr + i, depth+1);
 		}
