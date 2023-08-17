@@ -9,13 +9,12 @@ public class Main {
 		StringTokenizer st = new StringTokenizer(br.readLine());
 		n = Integer.parseInt(st.nextToken());
 		for(int i = 1; i <= 9;i++) {
-			recurrsion(i, 1);
+			if(check(i)) recurrsion(i, 1);
 		}
 	}
 	
 	
 	static void recurrsion(int num, int depth) {
-		if(!check(num)) return;
 		if(depth >= n) {
 			System.out.println(num);
 			return;
