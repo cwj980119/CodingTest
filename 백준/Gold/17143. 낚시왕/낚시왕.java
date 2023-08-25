@@ -32,8 +32,6 @@ public class Main {
 		}
 		total = 0;
 		for(int p = 1; p <= c; p++) {
-//			System.out.println(p);
-//			printSea();
 			Catch(p);
 			resetSea();
 			moveSharks();
@@ -97,18 +95,7 @@ public class Main {
 			}
 		}
 	}
-	
-//	static void printSea() {
-//		for(int i = 1; i <= r; i++) {
-//			for(int j = 1; j <=c ;j++) {
-//				if(sea[i][j] != 0) System.out.print(sharks[sea[i][j]].size+"\t");
-//				else System.out.print(0 + "\t");
-//			}
-//			System.out.println();
-//		}
-//		System.out.println();
-//	}
-	
+
 	static class Shark{
 		Point pos;
 		int speed, dir, size, idx;
@@ -121,16 +108,6 @@ public class Main {
 			this.size = z;
 			this.idx = idx;
 			this.isCatched = false;
-		}
-		
-		public Shark() {
-			this.size = 0;
-		}
-		
-		@Override
-		public String toString() {
-			
-			return ""+ size;
 		}
 	}
 
