@@ -2,7 +2,8 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.PriorityQueue;
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class Main {
@@ -35,14 +36,14 @@ public class Main {
             }
         }
 
-        PriorityQueue<Area> pq = new PriorityQueue<>((a1, a2)->(a1.distance-a2.distance));
+        Queue<Area> q = new LinkedList<>();
         visited = new boolean[n+2][m+2][2];
-        pq.add(new Area(new Point(1,1), 1, 0));
+        q.add(new Area(new Point(1,1),1,0));
         Area current = new Area(new Point(-1,-1),-1,-1);
         int nx, ny, nb;
 
-        while (!pq.isEmpty()){
-            current = pq.poll();
+        while (!q.isEmpty()){
+            current = q.poll();
             if(visited[current.p.x][current.p.y][current.isBreak]) continue;
             visited[current.p.x][current.p.y][current.isBreak] = true;
             if(current.p.x == n && current.p.y == m) break;
@@ -54,11 +55,11 @@ public class Main {
                 if(nx < 1 || nx > n || ny < 1 || ny > m) continue;
 
                 if(field[nx][ny] == 0 && !visited[nx][ny][nb]){
-                    pq.add(new Area(new Point(nx,ny), current.distance+1, nb));
+                    q.add(new Area(new Point(nx,ny), current.distance+1, nb));
                 }
 
                 if(field[nx][ny] == 1 && !visited[nx][ny][1] && nb == 0){
-                    pq.add(new Area(new Point(nx,ny), current.distance+1, 1));
+                    q.add(new Area(new Point(nx,ny), current.distance+1, 1));
                 }
             }
         }
