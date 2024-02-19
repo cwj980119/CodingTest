@@ -75,8 +75,8 @@ public class Main {
     }
 
     public static boolean checkAsc(String permutation){
-        for(int i = 1; i < permutation.length(); i++){
-            if(Integer.parseInt(String.valueOf(permutation.charAt(i)))< Integer.parseInt(String.valueOf(permutation.charAt(i-1)))){
+        for(int i = 0; i < permutation.length(); i++){
+            if(Integer.parseInt(String.valueOf(permutation.charAt(i))) != i+1){
                 return false;
             }
         }
