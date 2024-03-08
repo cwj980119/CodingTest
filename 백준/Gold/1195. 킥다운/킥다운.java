@@ -15,6 +15,9 @@ public class Main {
             b = temp;
         }
 
+        int al = a.length();
+        int bl = b.length();
+
         StringBuilder zero = new StringBuilder();
         for(int i = 0; i < b.length(); i++){
             zero.append("0");
@@ -37,26 +40,26 @@ public class Main {
 
         int answer = aa.length();
 
-label:  for(int i = 0; i <= a.length(); i++){
-            for(int j = 0; j < b.length(); j++){
+label:  for(int i = 0; i <= al; i++){
+            for(int j = 0; j < bl; j++){
                 if(aan[i+j] + bn[j] > 3) continue label;
             }
-            answer = Math.min(answer, a.length() + b.length() - i);
+            answer = Math.min(answer, al+bl - i);
             if(answer <= a.length()){
                 answer = a.length();
                 break;
             }
         }
 
-        if(answer != a.length()){
-    label:  for(int i = 0; i <= a.length(); i++){
-                for(int j = 0; j < b.length(); j++){
+        if(answer != al){
+    label:  for(int i = 0; i <= al; i++){
+                for(int j = 0; j < bl; j++){
                     if(abn[i+j] + bn[j] > 3) continue label;
                 }
 
-                answer = Math.min(answer, Math.max(a.length(), b.length()+i));
-                if(answer <= a.length()){
-                    answer = a.length();
+                answer = Math.min(answer, Math.max(al, bl+i));
+                if(answer <= al){
+                    answer = al;
                     break;
                 }
             }
