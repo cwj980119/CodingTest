@@ -50,7 +50,6 @@ public class Main {
         System.out.println(curr);
 
     }
-
     public static class Node{
         int left;
         int right;
